@@ -5,32 +5,52 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class CroneHandler {
+public class CroneHandler { /* Responsible for parsing a crone string into separate attributes such as minutes, hours etc.*/
+
+    static HashMap<String, String> attributes;
+
+
+    private enum Attributes{
+        MINUTES("minutes"),
+        HOURS("hours"),
+        DAY_OF_MONTH("day of month"),
+        MONTH("month"),
+        DAY_OF_WEEK("day of week");
+        private final String name;
+        private Attributes(String name){
+            this.name = name;
+        }
+    }
+
     public HashMap<String, String> getAttributes(String crone){
-        HashMap<String, String> attributes = new HashMap<>();
+        attributes = new HashMap<>();
         String[] croneArr = crone.split(" ");
 
-        StringBuilder minutes = new StringBuilder();
-        for(var i : parseCron(croneArr[0], 60, 0)) minutes.append(i + " ");
-        attributes.put("minutes", minutes.toString());
-
-        StringBuilder hours = new StringBuilder();
-        for(var i : parseCron(croneArr[1], 24, 0)) hours.append(i + " ");
-        attributes.put("hours", hours.toString());
-
-        StringBuilder dayOfMonth = new StringBuilder();
-        for(var i : parseCron(croneArr[2], 32, 1)) dayOfMonth.append(i + " ");
-        attributes.put("day of month", dayOfMonth.toString());
-
-        StringBuilder months = new StringBuilder();
-        for(var j : parseCron(croneArr[3], 13, 1)) months.append(j + " ");
-        attributes.put("month", months.toString());
-
-        StringBuilder daysOfWeek = new StringBuilder();
-        for(var i : parseCron(croneArr[4], 7, 0)) daysOfWeek.append(i + " ");
-        attributes.put("day of week", daysOfWeek.toString());
+        fillAttributes(Attributes.MINUTES, croneArr[0], 60, 0);
+        fillAttributes(Attributes.HOURS, croneArr[1], 24, 0);
+        fillAttributes(Attributes.DAY_OF_MONTH, croneArr[2], 32, 1);
+        fillAttributes(Attributes.MONTH, croneArr[3], 13, 1);
+        fillAttributes(Attributes.DAY_OF_WEEK, croneArr[4], 7, 0);
 
         return attributes;
+    }
+
+    private void fillAttributes(Attributes attribute, String toParse, int ceil, int ground){
+        StringBuilder parsed = new StringBuilder();
+        if(attribute != Attributes.DAY_OF_WEEK) for(var i : parseCron(toParse, ceil, ground)) parsed.append(i + " ");
+        else for(var i : parseCron(toParse, ceil, ground)) parsed.append(parseDays(i) + " ");
+        attributes.put(attribute.name, parsed.toString());
+    }
+
+    static String parseDays(Integer day){
+        if(day == 0) return "sun";
+        if(day == 1) return "mon";
+        if(day == 2) return "tue";
+        if(day == 3) return "wed";
+        if(day == 4) return "thu";
+        if(day == 5) return "fri";
+        if(day == 6) return "sat";
+        return null;
     }
 
     private static Set<Integer> parseCron(String exp, int ceil, int ground){
