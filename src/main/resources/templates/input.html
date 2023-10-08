@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Input</title>
+    <style>
+        .form{
+            margin: 0 auto;
+            width:250px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Enter a crone string with command (ver 1.1)</h2>
-<form th:action="@{/parseCrone}">
-    <input type="text" th:name="croneString"
-    placeholder="enter crone"/>
-    <input type="submit"/>
-</form>
+<h1 style="color: #5e9ca0; text-align: center;">Crone parser. Simple parser for crone expressions.</h1>
+<h2 style="color: #2e6c80; text-align: center;">Enter expression below, specify command if needed:</h2>
+<h2 style="color: #2e6c80; text-align: center;">Example "*/15 0 1,15 * 1-5 /usr/bin/find"</h2>
+<div class="form">
+    <form th:action="@{/parseCrone}">
+        <input type="text" th:name="croneString"
+               placeholder="enter crone"/>
+        <input type="submit"/>
+    </form>
+</div>
 </body>
 </html>
