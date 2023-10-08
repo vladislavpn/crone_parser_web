@@ -1,5 +1,6 @@
 package com.vladpiven.cronewebapp.controller;
 
+import com.vladpiven.cronewebapp.service.CroneService;
 import com.vladpiven.cronewebapp.util.CroneHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CroneController {
 
     @Autowired
-    CroneHandler handler;
+    CroneService service;
 
     @GetMapping("/input")
     public String input(){
@@ -21,14 +22,9 @@ public class CroneController {
     @GetMapping("/parseCrone")
     public String parseCrone(@RequestParam(value = "croneString") String croneString,
                              Model model){
-
         model.addAttribute("input", croneString);
-        model.addAttribute("croneAttributes", handler.getAttributes(croneString));
-
-        String[] croneArr = croneString.split(" ");
-        StringBuilder command = new StringBuilder();
-        for(int i = 5; i < croneArr.length; i++) command.append(croneArr[i] + " ");
-        model.addAttribute("command", command.toString());
+        model.addAttribute("croneAttributes", service.parseCroneExpression(croneString));
+        model.addAttribute("command", service.getCommand(croneString));
         return "print";
     }
 }
