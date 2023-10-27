@@ -20,8 +20,10 @@
 
 The endpoint for accesing application is /input where a cron expression can be entered with a following command. 
 ![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/3502600c-5024-403f-bb08-80aada1d93d3)
+
 Note that only valid cron expression will be parsed. If the entered expression is not a valid cron expression then a following message will apper: 
 ![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/6bb6d2f2-b821-4b7b-ba6c-93e39af34eff)
+
 Once Submit button is pressed, redirection to /print view is executed and parsing result is presented in a following table:
 ![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/0832e35d-f0e2-43e0-98a8-9161ecfe9be1)
 
