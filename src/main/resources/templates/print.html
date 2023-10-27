@@ -3,18 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Parsed output</title>
-<h2>
-    Input: <p th:text="${input}"></p>
-</h2>
-<h2>Parsed:</h2>
-<p>minute: <output th:text="${croneAttributes.get('minutes')}"></output> </p>
-    <p>hour: <output th:text="${croneAttributes.get('hours')}"></output></p>
-    <p>day of month: <output th:text="${croneAttributes.get('day of month')}"></output></p>
-    <p>month: <output th:text="${croneAttributes.get('month')}"></output> </p>
-    <p>day of week: <output th:text="${croneAttributes.get('day of week')}"></output> </p>
-    <p>command: <output th:text="${command}"></output> </p>
-</head>
-<body>
-
-</body>
+    <style>
+        .center-horizontal{
+            text-align: center;
+        }
+        .input {
+            text-align: center;
+            font-size: 25px;
+            font-family: "Arial", sans-serif;
+            color: #a3a3a3
+        }
+        .custom-input {
+            width: 300px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 15px;
+            display: inline-block; /* Prevent the input from taking full width */
+        }
+        .custom-button {
+            background-color: #b9d7ed; /* Button background color */
+            color: #333; /* Button text color */
+            border: none; /* Remove button border */
+            padding: 14px 20px; /* Adjust button padding for size */
+            border-radius: 5px;
+            margin-top: 10px; /* Move the button down from the input */
+            font-family: "Arial", sans-serif;
+            font-size: 15px;
+        }
+        body {
+            background-color: #2b2b2b;
+        }
+        .center-table {
+            margin: 0 auto; /* Center the table horizontally */
+            font-size: 20px; /* Change the font size for the table text */
+            font-family: "Arial", sans-serif;
+            color: #d6d6d6; /* Change the font color for the table text */
+            max-width: 600px;
+        }
+        td {
+            border: solid 2px #d6d6d6;
+            padding: 10px;
+        }
+    </style>
+    <div class="center-horizontal">
+        <form th:action="@{/parseCron}">
+            <input type="text" class="custom-input" th:name="cronString"
+                   placeholder="enter crone"/>
+            <input type="submit" value="Submit" class="custom-button"/>
+        </form>
+    </div>
+    <div class="input">
+        <p th:text="${input}"></p>
+    </div>
+    <table style="border: 2px solid #d6d6d6; border-collapse: collapse"; class="center-table">
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>minute</td>
+            <td><output th:text="${croneAttributes.get('minutes')}"></output></td>
+        </tr>
+        <tr>
+            <td>hour</td>
+            <td><output th:text="${croneAttributes.get('hours')}"></output></td>
+        </tr>
+        <tr>
+            <td>day of month</td>
+            <td><output th:text="${croneAttributes.get('day of month')}"></output></td>
+        </tr>
+        <tr>
+            <td>month</td>
+            <td><output th:text="${croneAttributes.get('month')}"></output></td>
+        </tr>
+        <tr>
+            <td>day of week</td>
+            <td><output th:text="${croneAttributes.get('day of week')}"></output></td>
+        </tr>
+        <tr>
+            <td>command</td>
+            <td><output th:text="${command}"></output></td>
+        </tr>
+    </table>
 </html>

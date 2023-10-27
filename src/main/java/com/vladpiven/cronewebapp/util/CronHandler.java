@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class CroneHandler { /* Responsible for parsing a crone string into separate attributes such as minutes, hours etc.*/
+public class CronHandler { /* Responsible for parsing a crone string into separate attributes such as minutes, hours etc.*/
 
     static HashMap<String, String> attributes;
 
@@ -22,15 +22,15 @@ public class CroneHandler { /* Responsible for parsing a crone string into separ
         }
     }
 
-    public HashMap<String, String> getAttributes(String crone){
+    public HashMap<String, String> getAttributes(String cron){
         attributes = new HashMap<>();
-        String[] croneArr = crone.split(" ");
+        String[] cronArr = cron.split(" ");
 
-        fillAttributes(Attributes.MINUTES, croneArr[0], 60, 0);
-        fillAttributes(Attributes.HOURS, croneArr[1], 24, 0);
-        fillAttributes(Attributes.DAY_OF_MONTH, croneArr[2], 32, 1);
-        fillAttributes(Attributes.MONTH, croneArr[3], 13, 1);
-        fillAttributes(Attributes.DAY_OF_WEEK, croneArr[4], 7, 0);
+        fillAttributes(Attributes.MINUTES, cronArr[0], 60, 0);
+        fillAttributes(Attributes.HOURS, cronArr[1], 24, 0);
+        fillAttributes(Attributes.DAY_OF_MONTH, cronArr[2], 32, 1);
+        fillAttributes(Attributes.MONTH, cronArr[3], 13, 1);
+        fillAttributes(Attributes.DAY_OF_WEEK, cronArr[4], 7, 0);
 
         return attributes;
     }
@@ -104,7 +104,10 @@ public class CroneHandler { /* Responsible for parsing a crone string into separ
                 values.add(i);
             }
         }
-        else values.add(Integer.parseInt(val));
+        else{
+            if(Integer.parseInt(val) >= ceil) return values;
+            values.add(Integer.parseInt(val));
+        }
         return values;
     }
 }

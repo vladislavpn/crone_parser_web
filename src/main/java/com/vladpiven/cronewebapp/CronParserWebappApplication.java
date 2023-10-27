@@ -6,14 +6,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class CroneParserWebappApplication extends SpringBootServletInitializer {
+public class CronParserWebappApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CroneParserWebappApplication.class, args);
+		SpringApplication.run(CronParserWebappApplication.class, args);
 	}
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(CroneParserWebappApplication.class);
+		return builder.sources(CronParserWebappApplication.class);
 	}
 }
