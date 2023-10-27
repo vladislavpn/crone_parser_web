@@ -1,4 +1,4 @@
-# A Spring MVC web application for parsing crone expressions. 
+# Crone is a Spring MVC web application for parsing cron expressions. 
 
 ## Structure
 ```
@@ -8,8 +8,8 @@
 │   │   │    ├── aspect                  // Logging with a use of Spring AOP framework 
 │   │   │    ├── controller              // Controller class for managing web requests 
 │   │   │    ├── service                 // Service layer
-│   │   │    ├── util                    // Contains CroneHandler class repsponsible for parsing the expression                       
-│   │   └── CroneParserWebApplication    // The entry point
+│   │   │    ├── util                    // Contains CronHandler class repsponsible for parsing the expression                       
+│   │   └── CronParserWebApplication    // The entry point
 │   ├── resources
 │   │   ├── static
 │   │   ├── templates
@@ -20,4 +20,5 @@
 
 The endpoint for accesing application is /input where a crone expression can be entered with a following command. 
 Note that only valid crone expression will be parsed.
+
 
