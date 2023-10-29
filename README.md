@@ -40,17 +40,18 @@ Crone provides two simple endpoints for parsing cron expressions:
 2. Parsed Cron Result: Visit /print to see the parsed cron expression displayed in a table with rows for each cron field (e.g., seconds, minutes, etc.).
 
 # Example
-Input Cron Expression: Enter a cron expression (e.g., */15 0 1,15 * 1-5) and submit.
+* Input Cron Expression: Enter a cron expression (e.g., */15 0 1,15 * 1-5) and submit.
 
-![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/3502600c-5024-403f-bb08-80aada1d93d3)
+<img src="https://github.com/vladislavpn/crone_parser_web/assets/123036820/3502600c-5024-403f-bb08-80aada1d93d3" width="500" height="400">
 
-Note that only valid cron expression will be parsed. If the entered expression is not a valid cron expression then a following message will apper: 
+* Note that only valid cron expression will be parsed. If the entered expression is not a valid cron expression then a following message will apper:
 
-![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/6bb6d2f2-b821-4b7b-ba6c-93e39af34eff)
+<img src="https://github.com/vladislavpn/crone_parser_web/assets/123036820/6bb6d2f2-b821-4b7b-ba6c-93e39af34eff" width="500" height="400">
 
-Parsed Cron Result: The application will display a table with fields like second, minute, hour, day of the month, month, and day of the week, showing the values for each field based on the provided cron expression.
+* Parsed Cron Result: The application will display a table with fields like second, minute, hour, day of the month, month, and day of the week, showing the values for each field based on the provided cron expression.
 
-![image](https://github.com/vladislavpn/crone_parser_web/assets/123036820/0832e35d-f0e2-43e0-98a8-9161ecfe9be1)
+<img src="https://github.com/vladislavpn/crone_parser_web/assets/123036820/0832e35d-f0e2-43e0-98a8-9161ecfe9be1" width="400" height="400">
+
 
 
 
