@@ -11,7 +11,7 @@ Crone is a simple Java Spring MVC web application that allows you to parse and v
 │   │   │    ├── controller              // Controller class for managing web requests 
 │   │   │    ├── service                 // Service layer
 │   │   │    ├── util                    // Contains CronHandler class repsponsible for parsing the expression                       
-│   │   └── CronParserWebApplication    // The entry point
+│   │   └── CronParserWebApplication     // The entry point
 │   ├── resources
 │   │   ├── static
 │   │   ├── templates
